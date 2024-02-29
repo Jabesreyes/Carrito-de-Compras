@@ -1,72 +1,94 @@
-var app = angular.module('Tienda', []);
 
-app.controller('TiendaController', ['$scope', '$http', function($scope, $http) {
-    // INICIA EL CARRITO Y CATEGORIA SELECCIONADA
-    $scope.carrito = [];
-    $scope.categoriaSeleccionada = '';
-    $scope.filtroNombre = '';
-    $scope.productoSeleccionado = null;
 
-    // CARGAMOS PRODUCTOS DESDE JSON
-    $http.get('productos.json').then(function(response) {
-        $scope.productos = response.data;
-        $scope.productosFiltrados = response.data;
+
+
+
+
+   // PRODUCTOS-TAB
+
+
+function openmodal(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+// URL de los archivos JSON
+const productosUrl = 'productos.json';
+
+// Función para cargar los archivos JSON
+async function cargarArchivoJson(url) {
+  const respuesta = await fetch(url);
+  return await respuesta.json();
+}
+
+// Función principal para cargar los datos
+async function cargarDatos() {
+
+  // Cargar datos de productos
+  const productosData = await cargarArchivoJson(productosUrl);
+  console.log("Datos de productos:");
+  console.log(productosData);
+
+  // Función para mostrar productos según el filtro
+  function mostrarProductos(productos) {
+    const datosProductosDiv = document.getElementById('datosProductos');
+    datosProductosDiv.innerHTML = "<h2>Datos de Productos</h2>";
+    productos.forEach(producto => {
+      const productoInfo = document.createElement('div');
+      productoInfo.innerHTML = `
+      <img src="${producto.image}" alt="Imagen de ${producto.nombre}">
+        <p>nombre: ${producto.title}</p>
+        <p>Precio: ${producto.price}</p>
+        <p>Stock: ${producto.stock}</p>
+
+        <p>Descripcion: ${producto.description}</p>
+        <button class="btn btn-primary">Agregar al carrito</button>
+
+        <button class="btn btn-primary" type="button" id="menos" onclick="javascript: compramenos()">+</button>
+        <input  type="text" style="text-align: center;" value="1" size="4">
+        <button class="btn btn-primary" type="button" id="menos" onclick="javascript: compramenos()">-</button>
+
+
+      `;
+      datosProductosDiv.appendChild(productoInfo);
     });
+  }
 
-    // FUNCION PARA CORTAR EL TEXTO
-    $scope.truncateText = function(text, maxWords) {
-        if (!text) {
-            return '';
-        }
+  // Mostrar todos los productos al cargar la página
+  mostrarProductos(productosData);
 
-        var words = text.split(' ');
-        if (words.length > maxWords) {
-            return words.slice(0, maxWords).join(' ') + '...';
-        }
+  // Filtrar productos con ID 20
+  document.getElementById('mostrarTodosBtn').addEventListener('click', function() {
+    const productosFiltrados20 = productosData.filter(producto => producto.id === 20 );
 
-        return text;
-    };
+    mostrarProductos(productosFiltrados20);
+  });
 
-    // FILTRAR POR CATEGORIA Y NOMBRE
-    $scope.filtrarProductos = function() {
-        $scope.productosFiltrados = $scope.productos.filter(function(producto) {
-            // CATEGORIA
-            var porCategoria = !$scope.categoriaSeleccionada || producto.category === $scope.categoriaSeleccionada;
+  document.getElementById('filtrarPrecioBtn').addEventListener('click', function() {
+    // Filtrar productos con ID 10
+    const productosFiltrados = productosData.filter(producto => producto.id === 10 );
+    mostrarProductos(productosFiltrados);
+  });
 
-            // NOMBRE
-            var porNombre = !$scope.filtroNombre || producto.title.toLowerCase().includes($scope.filtroNombre.toLowerCase());
+  document.getElementById('mostrarid30').addEventListener('click', function() {
+    const productosFiltrados30 = productosData.filter(producto => producto.id === 30 );
 
-            return porCategoria && porNombre;
-        });
-    };
+    mostrarProductos(productosFiltrados30);
+  });
 
-    // DETALLES DEL PRODUCTO
-    $scope.mostrarDetalles = function(producto) {
-        $scope.productoSeleccionado = producto;
-        $('#detallesModal').modal('show');  
-    };
 
-    // AGREGA PRODUCTO AL CARRITO
-    $scope.agregarAlCarrito = function(producto) {
-        $scope.carrito.push(producto);
-    };
 
-    // CALCULA EL TOTAL DINERO CARRITO
-    $scope.calcularTotal = function() {
-        var total = 0;
-        for (var i = 0; i < $scope.carrito.length; i++) {
-            total += $scope.carrito[i].price;
-        }
-        return total;
-    };
+}
 
-    $scope.mostrarCarrito = function() {
-        $('#carritoModal').modal('show');  
-    };
+// Llamar a la función para cargar los datos
+cargarDatos();
 
-    // SIMULA EL PAGO Y LIMPIA CARRITO
-    $scope.pagar = function() {
-        alert('Pago exitoso!');
-        $scope.carrito = [];
-    };
-}]);

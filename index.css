@@ -1,0 +1,304 @@
+body {
+    margin: 0;
+}
+:root{
+    --color-principal: #FF5A5F;
+    --color-primary-hover:#d64246;
+    --color-fondo: #F7F9FD;
+}
+
+.bg-fondo{
+    background: var(--color-fondo);
+}
+/*------------------------SLIDER-------------------------------------- */
+
+div#slider {
+    overflow: hidden;
+    position: absolute;
+    top: 4em;
+    left: 1vw;
+}
+    /* las imágenes no van a salir del márgen de la pantalla*/
+    div#slider figure img {
+        width: 98vw;
+        height: 20vw;
+        float: left;
+    
+    }
+
+    div#slider figure {
+        position: relative;
+        width: 500%;
+        margin: 0;
+        left: 0;
+        text-align: left;
+        font-size: 0;
+        animation: 10s slidy infinite; /*el movimiento se va a mantener de forma indefinida -infinito-*/
+    }
+
+
+/*esta parte del código define el movimiento de las imágenes a la izquierda*/
+@keyframes slidy {
+    0% {
+        left: 0%;
+    }
+
+    20% {
+        left: 0%;
+    }
+
+    25% {
+        left: -100%;
+    }
+
+    45% {
+        left: -100%;
+    }
+
+    50% {
+        left: -200%;
+    }
+
+    70% {
+        left: -200%;
+    }
+
+    100% {
+        left: -300%;
+    }
+
+
+
+ 
+}
+
+
+
+/*------------------------INICIA BOTONES DE PRODUCTO-------------------------------------- */
+
+.hm-tabs{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.hm-tabs .hm-tab-link{
+    margin: 0px 20px;
+    background: #fff;
+    border:1px solid #EEF5F9;
+    padding: 10px 30px;
+    border-radius: 22px;
+    color: #7C807E;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.hm-tabs .hm-tab-link.active,
+.hm-tabs .hm-tab-link:hover{
+    background: var(--color-principal);
+    color: #fff;
+}
+
+.hm-tabs .hm-tab-link.active .tabs-content{
+    background: red;
+}
+
+div#productos {
+    position: absolute;
+    top: 25.0em;
+    left: 14.0em;
+    width: 60vw;
+}
+
+
+div#nuestrosprod {
+    position: absolute;
+    top: 21.0em;
+    left: 30.0em;
+    width: 60vw;
+}
+
+/*------------------------FIN BOTONES DE PRODUCTO-------------------------------------- */
+
+
+
+/*------------------------INICIA TAMANO DE IMAGENES-------------------------------------- */
+img.pequeña{
+  width: 100px;
+  height: 100px;
+}
+img.mediana{
+  width: 250px;
+  height: 250px;
+}
+img.grande{
+  width: 400px;
+  height: 400px;
+}
+
+/*------------------------FIN AMANO DE IMAGENES-------------------------------------- */
+
+
+
+/*------------------------INICIO MEDIDAS PRODUCTOS-------------------------------------- */
+
+div#posi1 {
+    position: absolute;
+    top: 10.0em;
+    left: 1vw;
+}
+
+
+div#posi2 {
+    position: absolute;
+    top: 10.0em;
+    left: 25vw;
+}
+
+div#posi3 {
+    position: absolute;
+    top: 10.0em;
+    left: 50vw;
+}
+
+
+div#moda {
+    position: absolute;
+    top: 10.0em;
+    left: 2.0em;
+    width: 10vw;
+}
+
+
+
+
+/*------------------------FIN  MEDIDAS PRODUCTOS-------------------------------------- */
+
+/*------------------------inicio BOTONES-------------------------------------- */
+div#agregar {
+    position: absolute;
+    top: 21.0em;
+    left: 4.0em;
+    width: 20vw;
+}
+
+
+
+div#masmenos{
+    position: absolute;
+    top: 18.0em;
+    left: 4.0em;
+    width: 20vw;
+}
+/*------------------------FIN  BOTONES -------------------------------------- */
+
+
+
+div#audifonos {
+    position: absolute;
+    top: 25.0em;
+    left: 1.0em;
+    width: 20vw;
+}
+
+div#camara {
+    position: absolute;
+    top: 25.0em;
+    left: 1.0em;
+    width: 20vw;
+}
+
+div#celular {
+    position: absolute;
+    top: 25.0em;
+    left: 1.0em;
+    width: 20vw;
+}
+
+div#botones {
+    position: absolute;
+    top: 25.0em;
+    left: 1.0em;
+    width: 10vw;
+
+}
+
+div#tokyo {
+    position: absolute;
+    top: 35.0em;
+    left: 11.0em;
+    width: 10vw;
+
+}
+
+
+
+/*------------------------modal -------------------------------------- */
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 122px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+
+
+  /* Estilos para los datos de usuarios y productos */
+ #datosProductos {
+    position: absolute;
+    top: 30.0em;
+    left: 11.0em;
+    width: 30vw;
+
+    
+  }
+  
+  /* Estilos para cada elemento de usuario o producto */
+  #datosUsuarios div, #datosProductos div {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+
+/* Estilos para las imágenes */
+#datosUsuarios img, #datosProductos img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    max-height: 200px; 
+  }
