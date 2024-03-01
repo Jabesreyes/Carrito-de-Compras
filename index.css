@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 :root{
     --color-principal: #FF5A5F;
     --color-primary-hover:#d64246;
@@ -194,45 +195,6 @@ div#masmenos{
     width: 20vw;
 }
 /*------------------------FIN  BOTONES -------------------------------------- */
-
-
-
-div#audifonos {
-    position: absolute;
-    top: 25.0em;
-    left: 1.0em;
-    width: 20vw;
-}
-
-div#camara {
-    position: absolute;
-    top: 25.0em;
-    left: 1.0em;
-    width: 20vw;
-}
-
-div#celular {
-    position: absolute;
-    top: 25.0em;
-    left: 1.0em;
-    width: 20vw;
-}
-
-div#botones {
-    position: absolute;
-    top: 25.0em;
-    left: 1.0em;
-    width: 10vw;
-
-}
-
-div#tokyo {
-    position: absolute;
-    top: 35.0em;
-    left: 11.0em;
-    width: 10vw;
-
-}
 
 
 
