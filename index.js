@@ -68,19 +68,19 @@ async function cargarDatos() {
 
   // Filtrar productos con ID 20
   document.getElementById('mostrarTodosBtn').addEventListener('click', function() {
-    const productosFiltrados20 = productosData.filter(producto => producto.id === 20 );
+    const productosFiltrados20 = productosData.filter(producto => producto.category === 20 );
 
     mostrarProductos(productosFiltrados20);
   });
 
   document.getElementById('filtrarPrecioBtn').addEventListener('click', function() {
     // Filtrar productos con ID 10
-    const productosFiltrados = productosData.filter(producto => producto.id === 10 );
+    const productosFiltrados = productosData.filter(producto => producto.category === 10 );
     mostrarProductos(productosFiltrados);
   });
 
   document.getElementById('mostrarid30').addEventListener('click', function() {
-    const productosFiltrados30 = productosData.filter(producto => producto.id === 30 );
+    const productosFiltrados30 = productosData.filter(producto => producto.category === 30 );
 
     mostrarProductos(productosFiltrados30);
   });
