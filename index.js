@@ -58,3 +58,24 @@ document.querySelectorAll('.btn-products').forEach(btn => {
   });
 });
 
+// Obtener el botón del carrito de compras y los botones dentro del modal
+var carritoDeComprasBoton = document.getElementById("carritoDeComprasBoton")
+var carritoModal = document.getElementById("carritoModal")
+var botonCancelarModal = document.getElementById("cancelarCarritoDeComprasModal")
+var botonCerrarModal = document.getElementById("cerrarModal")
+
+//Mostrar el modal de carrito de compras
+carritoDeComprasBoton.addEventListener("click", function() {
+    carritoModal.style.display = "block";
+});
+
+//Cerrar el modal de carrito de compras desde CANCELAR
+botonCancelarModal.addEventListener("click", function() {
+  carritoModal.style.display = "none";
+});
+
+//Cerrar el modal del carrito de compras desde CERRAR
+botonCerrarModal.addEventListener("click", function(){
+  carritoModal.style.display = "none";
+})
+
