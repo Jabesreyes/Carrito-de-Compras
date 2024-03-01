@@ -3,9 +3,11 @@
     padding: 0;
 }
 
-/* :root{
-    --color-principal: #FF5A5F;
-    --color-primary-hover:#d64246;
-    --color-fondo: #F7F9FD;
-} */
+.btn-products {
+    background-color: #FF5A5F;
+    color: white; 
+}
 
+.btn-products:hover {
+    background-color: #FF787C;
+}
