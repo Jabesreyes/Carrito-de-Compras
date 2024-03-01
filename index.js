@@ -53,7 +53,7 @@ async function cargarDatos() {
         <p>Descripcion: ${producto.description}</p>
         <button class="btn btn-primary">Agregar al carrito</button>
 
-        <button class="btn btn-primary" type="button" id="menos" onclick="javascript: compramenos()">+</button>
+        <button class="btn btn-primary"  type="button" id="menos" onclick="javascript: compramenos()">+</button>
         <input  type="text" style="text-align: center;" value="1" size="4">
         <button class="btn btn-primary" type="button" id="menos" onclick="javascript: compramenos()">-</button>
 
