@@ -1,26 +1,3 @@
-
-
-
-
-
-
-   // PRODUCTOS-TAB
-
-
-function openmodal(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-  
 // URL de los archivos JSON
 const productosUrl = 'productos.json';
 
@@ -29,6 +6,26 @@ async function cargarArchivoJson(url) {
   const respuesta = await fetch(url);
   return await respuesta.json();
 }
+
+
+// PRODUCTOS-TAB
+
+
+function openmodal(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
 
 // Función principal para cargar los datos
 async function cargarDatos() {
@@ -67,20 +64,20 @@ async function cargarDatos() {
   mostrarProductos(productosData);
 
   // Filtrar productos con ID 20
-  document.getElementById('mostrarTodosBtn').addEventListener('click', function() {
-    const productosFiltrados20 = productosData.filter(producto => producto.category === 20 );
+  document.getElementById('mostrarTodosBtn').addEventListener('click', function () {
+    const productosFiltrados20 = productosData.filter(producto => producto.category === 20);
 
     mostrarProductos(productosFiltrados20);
   });
 
-  document.getElementById('filtrarPrecioBtn').addEventListener('click', function() {
+  document.getElementById('filtrarPrecioBtn').addEventListener('click', function () {
     // Filtrar productos con ID 10
-    const productosFiltrados = productosData.filter(producto => producto.category === 10 );
+    const productosFiltrados = productosData.filter(producto => producto.category === 10);
     mostrarProductos(productosFiltrados);
   });
 
-  document.getElementById('mostrarid30').addEventListener('click', function() {
-    const productosFiltrados30 = productosData.filter(producto => producto.category === 30 );
+  document.getElementById('mostrarid30').addEventListener('click', function () {
+    const productosFiltrados30 = productosData.filter(producto => producto.category === 30);
 
     mostrarProductos(productosFiltrados30);
   });
