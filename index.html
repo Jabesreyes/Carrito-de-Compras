@@ -1,141 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN FONT AWESOME -->
+    <script
+      src="https://kit.fontawesome.com/98cd0d0703.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- CDN FONT AWESOME -->
-  <script src="https://kit.fontawesome.com/98cd0d0703.js" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
 
-  <!-- BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- LINK CSS -->
+    <link href="index.css" rel="stylesheet" type="text/css" />
 
-  <!-- LINK CSS -->
-  <link href="index.css" rel="stylesheet" type="text/css" />
+    <title>Carrito</title>
+  </head>
 
-  <title>Carrito</title>
-</head>
-
-<body>
-
-  <!-- NAVBAR + ICONO CARRITO -->
-  <nav class="navbar bg-dark navbar-expand justify-content-center bg-body-tertiary" data-bs-theme="dark">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">San Martín</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Compras</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Nosotros</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">
-          <i class="fa-solid fa-xl fa-cart-shopping navbar" id = "carritoDeComprasBoton" style="color: #ffffff;"></i>
-            <a href="#" ng-click=mostrarCarrito()>
-              <span class="text-light">Total:  </span>
+  <body>
+    <!-- NAVBAR + ICONO CARRITO -->
+    <nav
+      class="navbar bg-dark navbar-expand justify-content-center bg-body-tertiary"
+      data-bs-theme="dark"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">San Martín</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Compras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">
+            <i
+              class="fa-solid fa-xl fa-cart-shopping navbar"
+              id="carritoDeComprasBoton"
+              style="color: #ffffff"
+            ></i>
+            <a href="#" ng-click="mostrarCarrito()">
+              <span class="text-light">Total: </span>
             </a>
-      </a>
-      </li>
-    </ul>
-  </nav>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-  <!-- CARRUSEL DE IMAGENES -->
-  <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/slider1.png" class="d-block w-100" alt="...">
+    <!-- CARRUSEL DE IMAGENES -->
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/slider1.png" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="img/slider2.png" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="img/slider3.png" class="d-block w-100" alt="..." />
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="img/slider2.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="img/slider3.png" class="d-block w-100" alt="...">
-      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleRide"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleRide"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 
-  <!-- NUESTROS PRODUCTOS -->
+    <!-- NUESTROS PRODUCTOS -->
 
-  <div class="products text-center">
-    <h1 class="text-center mt-5">Nuestros Productos</h1>
+    <div class="products text-center">
+      <h1 class="text-center mt-5">Nuestros Productos</h1>
 
-    <button type="button" class="btn btn-products btn-lg mt-3 mb-4">Joyas</button>
-    <button type="button" class="btn btn-products btn-lg mt-3 mb-4">Hombres</button>
-    <button type="button" class="btn btn-products btn-lg mt-3 mb-4">Mujeres</button>
-    <button type="button" class="btn btn-products btn-lg mt-3 mb-4">Tecnología</button>
+      <button type="button" class="btn btn-products btn-lg mt-3 mb-4">
+        Joyas
+      </button>
+      <button type="button" class="btn btn-products btn-lg mt-3 mb-4">
+        Hombres
+      </button>
+      <button type="button" class="btn btn-products btn-lg mt-3 mb-4">
+        Mujeres
+      </button>
+      <button type="button" class="btn btn-products btn-lg mt-3 mb-4">
+        Tecnología
+      </button>
 
-    <div id="product-list" class="row"></div>
-  </div>
+      <div id="product-list" class="row"></div>
+    </div>
 
- <!--==================================== CARRITO DE COMPRAS MODAL ========================================== -->
+    <!--==================================== CARRITO DE COMPRAS MODAL ========================================== -->
 
- <div class="modal" id="carritoModal" tabindex="1">
-  <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal" id="carritoModal" tabindex="1">
+      <div class="modal-dialog">
+        <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title">Carrito de Compras</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id = "cancelarCarritoDeComprasModal"></button>
+            <h5 class="modal-title">Carrito de Compras</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="cancelarCarritoDeComprasModal"
+            ></button>
           </div>
           <div class="modal-body">
-              <ul class="list-group">
-                  <li class="list-group-item" ng-repeat="producto En carrito">
-                      Producto - Precio: 
-                  </li>
-              </ul>
-              <p class="mt-3">Total a Pagar: </p>
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="producto En carrito">
+                Producto - Precio:
+              </li>
+            </ul>
+            <p class="mt-3">Total a Pagar:</p>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary" ng-click="pagar()">Pagar</button>
-              <button type="button" class="btn btn-secondary" id = "cerrarModal" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" ng-click="pagar()">
+              Pagar
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="cerrarModal"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
           </div>
-      </div>
-  </div>
-</div>
-
-<!-- MODAL PARA DETALLES DEL PRODUCTO -->
-  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="productModalLabel">Detalles del producto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="productModalBody">
-        </div>
-        <div class="modal-footer">
-          <label for="quantity">Cantidad:</label>
-          <input type="number" id="quantity" min="1" value="1">
-          <button type="button" id="agregarAlCarritoBtn" class="btn btn-dark">Agregar al carrito</button>
-          <button type="button" id="quitarDelCarritoBtn" class="btn btn-dark">Eliminar del carrito</button>
         </div>
       </div>
     </div>
-  </div>
 
+    <!-- MODAL PARA DETALLES DEL PRODUCTO -->
+    <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      aria-labelledby="productModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="productModalLabel">
+              Detalles del producto
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="productModalBody"></div>
+          <div class="modal-footer">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" min="1" value="1" />
+            <button type="button" id="agregarAlCarritoBtn" class="btn btn-dark">
+              Agregar al carrito
+            </button>
+            <button type="button" id="quitarDelCarritoBtn" class="btn btn-dark">
+              Eliminar del carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-
-  <!-- LINK JS -->
-  <script src="index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-</body>
-
+    <!-- LINK JS -->
+    <script src="index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
