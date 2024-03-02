@@ -113,8 +113,6 @@ let carrito = [];
 function actualizarVistaCarrito() {
   let carritoModalBody = document.querySelector('#carritoModal .modal-body')
   let total = 0
-  let cantidadProducto = document.getElementById('quantity')
-  let qty = cantidadProducto.getAttribute('value')
   let carritoHTML = '<ul class="list-group">'
   carrito.forEach(producto => {
     carritoHTML += `<li class="list-group-item">${producto.title} - Precio: $${producto.price}</li>`
@@ -127,27 +125,48 @@ function actualizarVistaCarrito() {
 
 // Función para agregar producto al carrito
 function agregarAlCarrito() {
-  carrito.push(productoSeleccionado)
+  let cantidadProducto = document.getElementById('quantity')
+  let cantidad = parseInt(cantidadProducto.value)
+  if (productoSeleccionado.stock >= cantidad && cantidad > 0) {
+    for (let i = 0; i < cantidad; i++) {
+      carrito.push(productoSeleccionado)
+      productoSeleccionado.stock-- //Restarle al stock lo agregado al carrito
+    }
   actualizarVistaCarrito()
-  productoSeleccionado = null
+  } else {
+    alert("No hay suficiente stock disponible.")
+  }
 }
 
 //Función para eliminar producto del carrito
-function eliminarDelCarrito(){
+function eliminarDelCarrito() {
+  let cantidadProducto = document.getElementById('quantity')
+  let cantidad = parseInt(cantidadProducto.value)
+  if (cantidad > 0) {
     let index = carrito.findIndex(producto => producto === productoSeleccionado);
     if (index !== -1) {
-      carrito.splice(index, 1);
+      if (cantidad <= carrito[index].stock) {
+        for (let i = 0; i < cantidad; i++) { //Eliminar la cantidad deseada
+          carrito.splice(index, 1);
+        }
+        productoSeleccionado.stock += cantidad //sumarle al stock lo elimnado del carrito
+        actualizarVistaCarrito()
+      } else {
+        alert("La cantidad ingresada es mayor que la cantidad del producto en el carrito")
+      }
+    } else {
+      alert("Este producto no está en el carrito")
     }
-    actualizarVistaCarrito();
-    productoSeleccionado = null;
+  } else {
+    alert("La cantidad debe ser mayor que cero")
+  }
 }
 
-
-// Agregar evento de agregar al botón en el modal de detalles del producto
+//Agregar evento de agregar al botón en el modal de detalles del producto
 document.querySelector('#agregarAlCarritoBtn').addEventListener('click', function() {
   agregarAlCarrito(productoSeleccionado)
 });
-// Agregar evento de eliminar al botón en el modal de detalles del producto
+//Agregar evento de eliminar al botón en el modal de detalles del producto
 document.querySelector('#quitarDelCarritoBtn').addEventListener('click', function(){
   eliminarDelCarrito(productoSeleccionado)
 })
