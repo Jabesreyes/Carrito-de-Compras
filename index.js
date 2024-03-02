@@ -90,27 +90,25 @@ document.querySelectorAll(".btn-products").forEach((btn) => {
 });
 
 // Obtener el botón del carrito de compras y los botones dentro del modal
-var carritoDeComprasBoton = document.getElementById("carritoDeComprasBoton");
-var carritoModal = document.getElementById("carritoModal");
-var botonCancelarModal = document.getElementById(
-  "cancelarCarritoDeComprasModal"
-);
-var botonCerrarModal = document.getElementById("cerrarModal");
+var carritoDeComprasBoton = document.getElementById("carritoDeComprasBoton")
+var carritoModal = document.getElementById("carritoModal")
+var botonCancelarModal = document.getElementById("cancelarCarritoDeComprasModal")
+var botonCerrarModal = document.getElementById("cerrarModal")
 
 //Mostrar el modal de carrito de compras
 carritoDeComprasBoton.addEventListener("click", function () {
-  carritoModal.style.display = "block";
-});
+  carritoModal.style.display = "block"
+})
 
 //Cerrar el modal de carrito de compras desde CANCELAR
 botonCancelarModal.addEventListener("click", function () {
-  carritoModal.style.display = "none";
-});
+  carritoModal.style.display = "none"
+})
 
 //Cerrar el modal del carrito de compras desde CERRAR
 botonCerrarModal.addEventListener("click", function () {
-  carritoModal.style.display = "none";
-});
+  carritoModal.style.display = "none"
+})
 
 // Función para actualizar la vista del carrito
 function actualizarVistaCarrito() {
@@ -123,6 +121,10 @@ function actualizarVistaCarrito() {
   });
   carritoHTML += `</ul><p class="mt-3">Total a Pagar: $${total.toFixed(2)}</p>`;
   carritoModalBody.innerHTML = carritoHTML;
+  let totalNav = document.getElementById("totalNav");
+  if (totalNav) {
+    totalNav.textContent = `$${total.toFixed(2)}`;
+  }
 }
 
 // Función para agregar producto al carrito
