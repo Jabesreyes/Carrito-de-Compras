@@ -52,6 +52,7 @@ function showProductDetails(product) {
   `;
   let productModal = new bootstrap.Modal(document.getElementById('productModal'));
   productModal.show();
+  productoSeleccionado = product
 }
 
 
@@ -92,16 +93,56 @@ var botonCerrarModal = document.getElementById("cerrarModal")
 
 //Mostrar el modal de carrito de compras
 carritoDeComprasBoton.addEventListener("click", function() {
-    carritoModal.style.display = "block";
-});
+    carritoModal.style.display = "block"
+})
 
 //Cerrar el modal de carrito de compras desde CANCELAR
 botonCancelarModal.addEventListener("click", function() {
   carritoModal.style.display = "none";
-});
+})
 
 //Cerrar el modal del carrito de compras desde CERRAR
 botonCerrarModal.addEventListener("click", function(){
-  carritoModal.style.display = "none";
+  carritoModal.style.display = "none"
 })
 
+let carrito = [];
+
+// Función para actualizar la vista del carrito
+function actualizarVistaCarrito() {
+  let carritoModalBody = document.querySelector('#carritoModal .modal-body')
+  let total = 0
+  let cantidadProducto = document.getElementById('quantity')
+  let qty = cantidadProducto.getAttribute('value')
+  let carritoHTML = '<ul class="list-group">'
+  carrito.forEach(producto => {
+    carritoHTML += `<li class="list-group-item">${producto.title} - Precio: $${producto.price}</li>`
+    total += producto.price 
+  })
+  carritoHTML += `</ul><p class="mt-3">Total a Pagar: $${total.toFixed(2)}</p>`
+  carritoModalBody.innerHTML = carritoHTML
+}
+
+
+// Función para agregar producto al carrito
+function agregarAlCarrito() {
+  carrito.push(productoSeleccionado)
+  actualizarVistaCarrito()
+  productoSeleccionado = null
+}
+
+//Función para eliminar producto del carrito
+function eliminarDelCarrito(){
+  carrito.splice(productoSeleccionado)
+  actualizarVistaCarrito()
+  productoSeleccionado = null
+}
+
+// Agregar evento de agregar al botón en el modal de detalles del producto
+document.querySelector('#agregarAlCarritoBtn').addEventListener('click', function() {
+  agregarAlCarrito(productoSeleccionado)
+});
+// Agregar evento de eliminar al botón en el modal de detalles del producto
+document.querySelector('#quitarDelCarritoBtn').addEventListener('click', function(){
+  eliminarDelCarrito(productoSeleccionado, 1)
+})
