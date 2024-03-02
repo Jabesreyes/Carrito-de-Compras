@@ -106,6 +106,7 @@ botonCerrarModal.addEventListener("click", function(){
   carritoModal.style.display = "none"
 })
 
+//Array de listado de productos en carrito
 let carrito = [];
 
 // Función para actualizar la vista del carrito
@@ -133,10 +134,14 @@ function agregarAlCarrito() {
 
 //Función para eliminar producto del carrito
 function eliminarDelCarrito(){
-  carrito.splice(productoSeleccionado)
-  actualizarVistaCarrito()
-  productoSeleccionado = null
+    let index = carrito.findIndex(producto => producto === productoSeleccionado);
+    if (index !== -1) {
+      carrito.splice(index, 1);
+    }
+    actualizarVistaCarrito();
+    productoSeleccionado = null;
 }
+
 
 // Agregar evento de agregar al botón en el modal de detalles del producto
 document.querySelector('#agregarAlCarritoBtn').addEventListener('click', function() {
@@ -144,5 +149,5 @@ document.querySelector('#agregarAlCarritoBtn').addEventListener('click', functio
 });
 // Agregar evento de eliminar al botón en el modal de detalles del producto
 document.querySelector('#quitarDelCarritoBtn').addEventListener('click', function(){
-  eliminarDelCarrito(productoSeleccionado, 1)
+  eliminarDelCarrito(productoSeleccionado)
 })
