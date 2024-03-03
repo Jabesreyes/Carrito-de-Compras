@@ -183,3 +183,50 @@ document
   .addEventListener("click", function () {
     eliminarDelCarrito(productoSeleccionado);
   });
+
+// FUNCIONES PARA GENERAR LA FACTURA 
+// Modifica la función de pagar para eliminar el modal de carrito de compras y muestra la factura
+function pagar() {
+  // Eliminar el modal de carrito de compras
+  let carritoModal = document.getElementById('carritoModal');
+  carritoModal.parentNode.removeChild(carritoModal);
+
+  // Genera el contenido de la factura
+  let facturaHTML = '<ul>';
+  let totalGeneral = 0;
+  carrito.forEach((producto) => {
+    facturaHTML += `<li>${producto.title} - Cantidad: 1 - Precio Unitario: $${producto.price.toFixed(2)} - Precio Total: $${producto.price.toFixed(2)}</li>`;
+    totalGeneral += producto.price; // Suma el precio de cada producto al total general
+  });
+  facturaHTML += '</ul>';
+
+  // Muestra el total a pagar
+  facturaHTML += `<p>Total a pagar: $${totalGeneral.toFixed(2)}</p>`;
+
+  // Muestra el contenido de la factura en la ventana modal
+  document.getElementById('facturaContent').innerHTML = facturaHTML;
+
+  // Muestra la ventana de la factura
+  let facturaModal = new bootstrap.Modal(document.getElementById('facturaModal'));
+  facturaModal.show();
+}
+
+// FUNCION PARA GENERAR LA FACTURA EN PDF
+function descargarFactura() {
+  // Opciones para la configuración de html2pdf
+  var options = {
+    filename: 'factura.pdf', // Nombre con el que se guarda el archivo PDF
+    image: { type: 'jpeg', quality: 0.98 }, // Opciones de imagen
+    html2canvas: { scale: 2 }, // Opciones de html2canvas
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } // Opciones de jsPDF
+  };
+
+  // Elemento HTML de la factura
+  var element = document.getElementById('facturaContent');
+
+  // Utilizar html2pdf para generar y descargar el PDF
+  html2pdf()
+    .set(options)
+    .from(element)
+    .save();
+}
